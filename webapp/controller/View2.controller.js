@@ -5,6 +5,11 @@ sap.ui.define([
 
     return Controller.extend("com.demo.p5sapui5.controller.View2", {
         onInit() {
+        },
+        onBackToView1(){
+            // this.getOwnerComponent().getRouter().navTo("RouteView1")
+            history.go(-1)
+
         }
     });
 });

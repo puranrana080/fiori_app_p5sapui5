@@ -1,9 +1,11 @@
 <mvc:View controllerName="com.demo.p5sapui5.controller.View2"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
-    <Page id="page2" title="View Two">
+    <Page id="page2" title="View Two" showNavButton="true" navButtonPress="onBackToView1">
     <content>
-    <Text id="two" text="i am from view 2" />
+    <!-- <Button id="btn-2" text="Go to Page 1" press="backbutton" ></Button> -->
+    <Text id="twotext" text="Welcome to SAPUI5" textAlign="Center" width="100%" class="sapMH2FontSize" />
+
     
     </content>
     </Page>

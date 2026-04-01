@@ -1,10 +1,51 @@
-<mvc:View controllerName="com.demo.p5sapui5.controller.View1"
+<mvc:View
+    controllerName="com.demo.p5sapui5.controller.View1"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
-    <content>
-    <Text id="one" text="i am button" />
-    
-    </content>
+    xmlns="sap.m"
+>
+    <Page
+        id="page"
+        title="{i18n>title}"
+    >
+        <content>
+            <Text
+                id="idTxtWelcome"
+                text="Welcome to SAPUI5"
+                textAlign="Center"
+                width="100%"
+                class="sapMH2FontSize"
+            />
+            <Label
+                id="l1"
+                text="Enter Your Name"
+                required="true"
+                class="sapUiSmallMarginBegin"
+            />
+            <Input
+                id="idIpName"
+                width="30%"
+                maxLength="10"
+                value="Puran"
+                class="sapUiTinyMarginBegin"
+            />
+            <Button
+                id="idBtnSubmit"
+                text="Submit"
+                type="Emphasized"
+                class="sapUiTinyMarginBegin"
+                press="onSubmit"
+            />
+        </content>
+        <footer>
+            <Bar id="bar1">
+                <contentRight>
+                    <Button
+                        id="one"
+                        text="Go To page 2"
+                        press="onPress"
+                    />
+                </contentRight>
+            </Bar>
+        </footer>
     </Page>
 </mvc:View>
