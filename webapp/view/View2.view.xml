@@ -1,0 +1,10 @@
+<mvc:View controllerName="com.demo.p5sapui5.controller.View2"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page2" title="View Two">
+    <content>
+    <Text id="two" text="i am from view 2" />
+    
+    </content>
+    </Page>
+</mvc:View>
