@@ -14,7 +14,6 @@ sap.ui.define([
             var msg = "Welcome to "+name;
             this.getView().byId("idTxtWelcome").setText(msg);
             this.getView().byId("idBtnSubmit").setType("Accept")
-            this.getView().byId('idTxtWelcome').setTextAlign("Left")
             this.getView().byId("l1").setRequired(false)
         }
     });
