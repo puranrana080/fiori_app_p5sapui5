@@ -33,7 +33,7 @@
                 text="Submit"
                 type="Emphasized"
                 class="sapUiTinyMarginBegin"
-                press="onSubmit"
+                press="onSubmit1"
             /> 
     <!-- <Text id="idTxt1" text="Page one"></Text> -->
      <Panel headerText="Employee Details" expandable="true" >
@@ -167,7 +167,7 @@
        
        </Panel>  
 <!-- FRom layout -->
-<Text text="Simple Form" class="sapUiSmallMarginTop sapMH2FontSize" textAlign="Center" width="100%"  ></Text>
+<Text  text="Simple Form" class="sapUiSmallMarginTop simpleformHeading sapMH2FontSize" textAlign="Center" width="100%"  ></Text>
 
 <f:SimpleForm title="Employee Details (Simple Form)" editable="true" layout="ResponsiveGridLayout"
 labelSpanL="5" labelSpanM="5" emptySpanL="0" emptySpanM="0" columnsL="3" columnsM="2"
@@ -191,12 +191,71 @@ labelSpanL="5" labelSpanM="5" emptySpanL="0" emptySpanM="0" columnsL="3" columns
 <Input ></Input>
 
 </f:content>
+</f:SimpleForm> 
+<Text  text="VBOX HBOX" class="sapUiSmallMarginTop sapUiSmallMarginBottom sapMH2FontSize" textAlign="Center" width="100%"  ></Text>
+<VBox >
+<Button text="Button1" type="Accept"></Button>
+<Button text="Button2" type="Reject"></Button>
+</VBox>
+<HBox >
+<Button text="HBoxButton1" type="Accept"></Button>
+<Button text="HBoxButton2" type="Reject"></Button>
+</HBox>
+
+<Text  text="FlexBOX" class="sapUiSmallMarginTop sapUiSmallMarginDownBottom  sapMH2FontSize" textAlign="Center" width="100%"  ></Text>
+<FlexBox justifyContent="Center"  alignItems="Center" height="40%">
+<Button  text="Go" type="Accept"></Button>
+<Button text="Reset" type="Reject" class="sapUiTinyMarginBegin" ></Button>
+</FlexBox>
+
+<Panel >
+
+<ObjectHeader title="Puran" number="10000" numberUnit="INR" backgroundDesign="Solid" >
+<attributes>
+<ObjectAttribute  title="Employee Id" text="100000" ></ObjectAttribute>
+<ObjectAttribute  title="Designation" text="Team Lead" ></ObjectAttribute>
+</attributes>
+<statuses>
+<ObjectStatus text="Permanent" state="Success" ></ObjectStatus>
+</statuses>
+</ObjectHeader>
+<IconTabBar >
+<items>
+<IconTabFilter icon="sap-icon://information" >
+<Text text="I am information Tab"></Text>
+</IconTabFilter>
+<IconTabFilter icon="sap-icon://notes" >
+<Text text="I am Notes Tab"></Text>
+</IconTabFilter>
+</items>
+
+</IconTabBar>
+</Panel>
+<!-- Validation Part -->
+
+<Text  text="Validation Part" class="sapUiSmallMarginTop simpleformHeading sapMH2FontSize" textAlign="Center" width="100%"  ></Text>
+
+<f:SimpleForm title="Employee Details (Simple Form)" editable="true" layout="ResponsiveGridLayout"
+labelSpanL="5" labelSpanM="5" emptySpanL="4" emptySpanM="4"
+>
+<f:content>
+<core:Title text="Employee Details"></core:Title>
+<Label  text="Employee ID" required="true" ></Label>
+<Input id="idEmpId" ></Input>
+
+
+</f:content>
 </f:SimpleForm>
+
+
+
+
 
     </content>
     <footer>
             <Bar id="bar1">
                 <contentRight>
+                <Button id="idBtnSub" text="Submit" type="Accept" press="onSubmit2"></Button>
                     <Button
                         id="one"
                         text="Go To page 2"
