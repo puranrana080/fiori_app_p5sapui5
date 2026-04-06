@@ -18,7 +18,7 @@
                 <Table items="{empModel>/results}">
                     <headerToolbar>
                         <Toolbar>
-                            <Title text="Employee List" />
+                            <Title text="Employee List Using JSON Model" />
                         </Toolbar>
                     </headerToolbar>
                     <columns>
@@ -70,6 +70,69 @@
                                 <Text text="{empModel>Doj}" />
                                 <Text text="{empModel>Rating}" />
                                 <Text text="{empModel>Status}" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </ScrollContainer>
+
+             <ScrollContainer
+                vertical="true"
+                horizontal="true"
+            >
+                <Table items="{/EmployeeSet}">
+                    <headerToolbar>
+                        <Toolbar>
+                            <Title text="Employee List  Using OData Model" />
+                        </Toolbar>
+                    </headerToolbar>
+                    <columns>
+                        <Column width="6rem">
+                            <Text text="Employee ID" />
+                        </Column>
+                        <Column width="8rem">
+                            <Text text="Name" />
+                        </Column>
+                        <Column width="13rem">
+                            <Text text="Designation" />
+                        </Column>
+                        <Column width="6rem">
+                            <Text text="Skill" />
+                        </Column>
+                        <Column width="10rem">
+                            <Text text="Email" />
+                        </Column>
+                        <Column width="10rem">
+                            <Text text="Phone" />
+                        </Column>
+                        <Column width="5rem">
+                            <Text text="Salary" />
+                        </Column>
+                        <Column width="8rem">
+                            <Text text="Doj" />
+                        </Column>
+                        <Column width="4rem">
+                            <Text text="Rating" />
+                        </Column>
+                        <Column width="8rem">
+                            <Text text="Status" />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem>
+                            <cells>
+                              
+                                <Text text="{Empid}" />
+                                <Text text="{path:'Name', formatter:'.f.formatName'}" />
+                                <Text text="{Designation}" />
+                                <ObjectStatus text="{Skill}" state="{path:'Skill',formatter:'.f.colorSkill'}" />
+                                <Text text="{Email}" />
+                                <Text text="{Phone}" />
+                                <Text text="{Salary}" />
+                                <Text text="{path:'Doj' ,formatter:'.f.formatDate' }" />
+                                <Text text="{Rating}" />
+                                <!-- <Text text="{Status}" /> -->
+                                <ObjectStatus text="{Status}" state="{path:'Status',formatter:'.f.colorStatus'}" />
                             </cells>
                         </ColumnListItem>
                     </items>

@@ -1,10 +1,13 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller"
-], (Controller) => {
+    "sap/ui/core/mvc/Controller",
+    "com/demo/p5sapui5/model/formatter"
+], (Controller,formatter) => {
     "use strict";
 
     return Controller.extend("com.demo.p5sapui5.controller.View1", {
+        f:formatter,
         onInit() {
+            this.getOwnerComponent().readEmployees()
         },
         onPress(){
             this.getOwnerComponent().getRouter().navTo("RouteView2")

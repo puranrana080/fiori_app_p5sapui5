@@ -21,21 +21,23 @@ sap.ui.define([
 
             // enable routing
             this.getRouter().initialize();
+            this.readEmployees();
 
+            
+        },
+        readEmployees:function(){
             //get the odata model object
             var oModel = this.getModel()
-
             var empModel = this.getModel("empModel");
             oModel.read("/EmployeeSet",{
                 success(data){
                     for(var i=0;i<data.results.length;i++){
                         data.results[i].SNo=i+1
+                        data.results[i].Name = "Mr "+ data.results[i].Name;
                     }
-
                     empModel.setData(data);
                 },
                 error(){
-                    
                 }
             })
         }
