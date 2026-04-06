@@ -28,6 +28,10 @@ sap.ui.define([
             var empModel = this.getModel("empModel");
             oModel.read("/EmployeeSet",{
                 success(data){
+                    for(var i=0;i<data.results.length;i++){
+                        data.results[i].SNo=i+1
+                    }
+
                     empModel.setData(data);
                 },
                 error(){

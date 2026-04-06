@@ -11,57 +11,70 @@
         title="{i18n>title}"
     >
         <content>
-            <Table items="{empModel>/results}">
-                <headerToolbar>
-                    <Toolbar>
-                        <Title text="Employee List" />
-                    </Toolbar>
-                </headerToolbar>
-                <columns>
-                    <Column>
-                        <Text text="Employee ID" />
-                    </Column>
-                    <Column>
-                        <Text text="Name" />
-                    </Column>
-                    <Column>
-                        <Text text="Designation" />
-                    </Column>
-                    <Column>
-                        <Text text="Skill" />
-                    </Column>
-                    <Column>
-                        <Text text="Email" />
-                    </Column>
-                    <Column>
-                        <Text text="Phone" />
-                    </Column>
-                    <Column>
-                        <Text text="Salary" />
-                    </Column>
-                    <Column>
-                        <Text text="Doj" />
-                    </Column>
-                    <Column>
-                        <Text text="Rating" />
-                    </Column>
-                </columns>
-                <items>
-                    <ColumnListItem>
-                        <cells>
-                            <Text text="{empModel>Empid}" />
-                            <Text text="{empModel>Name}" />
-                            <Text text="{empModel>Designation}" />
-                            <Text text="{empModel>Skill}" />
-                            <Text text="{empModel>Email}" />
-                            <Text text="{empModel>Phone}" />
-                            <Text text="{empModel>Salary}" />
-                            <Text text="{empModel>Doj}" />
-                            <Text text="{empModel>Rating}" />
-                        </cells>
-                    </ColumnListItem>
-                </items>
-            </Table>
+            <ScrollContainer
+                vertical="true"
+                horizontal="true"
+            >
+                <Table items="{empModel>/results}">
+                    <headerToolbar>
+                        <Toolbar>
+                            <Title text="Employee List" />
+                        </Toolbar>
+                    </headerToolbar>
+                    <columns>
+                        <Column width="4rem">
+                            <Text text="S.No." />
+                        </Column>
+                        <Column width="6rem">
+                            <Text text="Employee ID" />
+                        </Column>
+                        <Column width="8rem">
+                            <Text text="Name" />
+                        </Column>
+                        <Column width="13rem">
+                            <Text text="Designation" />
+                        </Column>
+                        <Column width="6rem">
+                            <Text text="Skill" />
+                        </Column>
+                        <Column width="10rem">
+                            <Text text="Email" />
+                        </Column>
+                        <Column width="10rem">
+                            <Text text="Phone" />
+                        </Column>
+                        <Column width="5rem">
+                            <Text text="Salary" />
+                        </Column>
+                        <Column width="20rem">
+                            <Text text="Doj" />
+                        </Column>
+                        <Column width="4rem">
+                            <Text text="Rating" />
+                        </Column>
+                        <Column width="8rem">
+                            <Text text="Status" />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem>
+                            <cells>
+                                <Text text="{empModel>SNo}" />
+                                <Text text="{empModel>Empid}" />
+                                <Text text="{empModel>Name}" />
+                                <Text text="{empModel>Designation}" />
+                                <Text text="{empModel>Skill}" />
+                                <Text text="{empModel>Email}" />
+                                <Text text="{empModel>Phone}" />
+                                <Text text="{empModel>Salary}" />
+                                <Text text="{empModel>Doj}" />
+                                <Text text="{empModel>Rating}" />
+                                <Text text="{empModel>Status}" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </ScrollContainer>
 
             <Text
                 id="idTxtWelcome"
