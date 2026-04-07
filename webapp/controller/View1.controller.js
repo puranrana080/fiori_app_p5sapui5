@@ -43,6 +43,12 @@ sap.ui.define([
                 // this.getView().byId('idEmpId').setValueStateText("Employee Id should atleast be 10 digits");  
                 // }
             }
+        },
+        multiValueForm(){
+            var selBoxVal = this.getView().byId('idSel').getSelectedKey();
+            var cbValue = this.getView().byId('idCom').getSelectedKey();
+            var mcbValue = this.getView().byId('idMCom').getSelectedKeys();
+           var selIndex = this.getView().byId('idRBtn').getSelectedIndex();
         }
     });
 });

@@ -11,6 +11,78 @@
         title="{i18n>title}"
     >
         <content>
+
+         <f:SimpleForm
+                title="MultiValue UI Element"
+                editable="true"
+                layout="ResponsiveGridLayout"
+                labelSpanL="2"
+                labelSpanM="2"
+                emptySpanL="5"
+                emptySpanM="5"
+            >
+                <f:content>
+                   
+                    <Label text="I am select Box" />
+                    <Select id="idSel" items="{/EmployeeSet}" >
+                    <items>
+                    <core:Item text="{Name}" key="{Name}" ></core:Item>
+                    </items>
+                    </Select>
+                     <Label text="I am Combo Box" />
+                    <ComboBox  id="idCom" items="{/EmployeeSet}" >
+                    <items>
+                    <core:Item text="{Skill}" key="{Skill}" ></core:Item>
+                    </items>
+                    </ComboBox>
+                    <Label text="I am Multi Combo Box" />
+                    <MultiComboBox  id="idMCom"  items="{/EmployeeSet}" showSelectAll="true" >
+                    <items>
+                    <core:Item text="{Designation}" key="{Designation}" ></core:Item>
+                    </items>
+                    </MultiComboBox>
+                     <Label text="I am Radio Button Group" />
+                    <RadioButtonGroup  id="idRBtn"  buttons="{/EmployeeSet}">
+                    <buttons>
+                    <RadioButton text="{Status}" ></RadioButton>
+                    </buttons>
+                    </RadioButtonGroup>
+                </f:content>
+            </f:SimpleForm>
+
+
+
+
+        <List items="{/EmployeeSet}" >
+        <headerToolbar>
+        <Toolbar >
+         <Title text="Employee List"></Title>
+         </Toolbar>
+        </headerToolbar>
+        <items> 
+        <ObjectListItem title="{Name}" number="{Salary}" numberUnit="INR"  >
+        <attributes>
+        <ObjectAttribute title="Employee Id" text="{EmpId}"></ObjectAttribute>
+        <ObjectAttribute title="Designation" text="{Designation}"></ObjectAttribute>
+        </attributes>
+        <firstStatus>
+        <ObjectStatus text="{Status}" state="{path:'Status',formatter:'.f.colorStatus'}" ></ObjectStatus>
+        </firstStatus>
+
+        </ObjectListItem>
+        
+        </items>
+        </List>
+
+
+
+         <Text
+                id="idHeadin"
+                text="Displaying data to ui"
+                textAlign="Center"
+                width="100%"
+                class="sapMH2FontSize sapUiLargeMarginTop "
+            />
             <ScrollContainer
                 vertical="true"
                 horizontal="true"
@@ -568,6 +640,11 @@
                         id="one"
                         text="Go To page 2"
                         press="onPress"
+                    />
+                     <Button
+                        id="multiValueBtn"
+                        text="Submit Multi Value Form"
+                        press="multiValueForm"
                     />
                 </contentRight>
             </Bar>
