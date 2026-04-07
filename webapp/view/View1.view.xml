@@ -11,15 +11,10 @@
         title="{i18n>title}"
     >
         <content>
-         <Text
-                id="idH3"
-                text="FIORI F4Help"
-                textAlign="Center"
-                width="100%"
-                class="sapMH2FontSize sapUiLargeMarginTop "
-            />
 
-             <f:SimpleForm
+        <Panel headerText="Search Employees" expandable="true" expanded="true">
+
+         <f:SimpleForm
                 title="MultiValue F4Help"
                 editable="true"
                 layout="ResponsiveGridLayout"
@@ -34,21 +29,18 @@
                     <Input id="idEmpID" showValueHelp="true" valueHelpRequest="onPressValueHelp" ></Input>
                    
                 </f:content>
-            </f:SimpleForm>
+            </f:SimpleForm> 
+            <FlexBox justifyContent="End" >
+            <Button text="Go" icon="sap-icon://accept" type="Accept" press="onPressGo" ></Button>
+            <Button text="Reset" icon="sap-icon://reset" type="Reject" class="sapUiTinyMarginBegin" press="onPressReset" ></Button>
+            </FlexBox>
 
-
-            <Text
-                id="idH1"
-                text="FIORI V22 select rows from table"
-                textAlign="Center"
-                width="100%"
-                class="sapMH2FontSize sapUiLargeMarginTop "
-            />
-         <ScrollContainer
+   </Panel>
+             <ScrollContainer
                 vertical="true"
                 horizontal="true"
             >
-                <Table id="idTable" items="{/EmployeeSet}" mode="MultiSelect" >
+                <Table id="idTable" items="{/EmployeeSet}" mode="SingleSelectLeft" >
                     <headerToolbar>
                         <Toolbar>
                             <Title text="Employee List  Using OData Model" />
@@ -108,6 +100,92 @@
                     </items>
                 </Table>
             </ScrollContainer>
+        
+
+        
+     
+         <Text
+                id="idH3"
+                text="FIORI F4Help"
+                textAlign="Center"
+                width="100%"
+                class="sapMH2FontSize sapUiLargeMarginTop "
+            />
+
+            
+
+
+            <Text
+                id="idH1"
+                text="FIORI V22 select rows from table"
+                textAlign="Center"
+                width="100%"
+                class="sapMH2FontSize sapUiLargeMarginTop "
+            />
+         <!-- <ScrollContainer
+                vertical="true"
+                horizontal="true"
+            >
+                <Table id="idTable" items="{/EmployeeSet}" mode="SingleSelectLeft" >
+                    <headerToolbar>
+                        <Toolbar>
+                            <Title text="Employee List  Using OData Model" />
+                            <ToolbarSpacer ></ToolbarSpacer>
+                            <Button text="Get Selected Data" press="getSelEmpData" ></Button>
+                        </Toolbar>
+                    </headerToolbar>
+                    <columns>
+                        <Column width="6rem">
+                            <Text text="Employee ID" />
+                        </Column>
+                        <Column width="8rem">
+                            <Text text="Name" />
+                        </Column>
+                        <Column width="13rem">
+                            <Text text="Designation" />
+                        </Column>
+                        <Column width="6rem">
+                            <Text text="Skill" />
+                        </Column>
+                        <Column width="10rem">
+                            <Text text="Email" />
+                        </Column>
+                        <Column width="10rem">
+                            <Text text="Phone" />
+                        </Column>
+                        <Column width="5rem">
+                            <Text text="Salary" />
+                        </Column>
+                        <Column width="8rem">
+                            <Text text="Doj" />
+                        </Column>
+                        <Column width="4rem">
+                            <Text text="Rating" />
+                        </Column>
+                        <Column width="8rem">
+                            <Text text="Status" />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem type="Active" press="onPressRow" >
+                            <cells>
+                              
+                                <Text text="{Empid}" />
+                                <Text text="{path:'Name', formatter:'.f.formatName'}" />
+                                <Text text="{Designation}" />
+                                <ObjectStatus text="{Skill}" state="{path:'Skill',formatter:'.f.colorSkill'}" />
+                                <Text text="{Email}" />
+                                <Text text="{Phone}" />
+                                <Text text="{Salary}" />
+                                <Text text="{path:'Doj' ,formatter:'.f.formatDate' }" />
+                                <Text text="{Rating}" />
+                                
+                                <ObjectStatus text="{Status}" state="{path:'Status',formatter:'.f.colorStatus'}" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </ScrollContainer> -->
    <Text
                 id="idH2"
                 text="FIORI V21"
