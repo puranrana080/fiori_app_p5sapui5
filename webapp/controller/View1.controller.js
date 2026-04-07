@@ -75,6 +75,23 @@ sap.ui.define([
         onPressRow(oEvent){
           var empid = oEvent.getSource().getBindingContext().getProperty("Empid")
 
+        },
+        onPressRowFromF4HelpTable(oEvent){
+        var empid = oEvent.getSource().getBindingContext().getProperty("Empid");
+        this.getView().byId('idEmpID').setValue(empid);
+        this.oDialog.close();
+        },
+        onPressValueHelp(){
+            //load the fragment
+            if(!this.oDialog){
+                  this.oDialog = sap.ui.xmlfragment(this.getView().getId(),"com.demo.p5sapui5.view.EmpidF4Help",this);
+                  this.getView().addDependent(this.oDialog);
+            }
+            
+            this.oDialog.open()
+        },
+        onCloseDialog(){
+this.oDialog.close()
         }
     });
 });

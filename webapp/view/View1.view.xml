@@ -11,6 +11,32 @@
         title="{i18n>title}"
     >
         <content>
+         <Text
+                id="idH3"
+                text="FIORI F4Help"
+                textAlign="Center"
+                width="100%"
+                class="sapMH2FontSize sapUiLargeMarginTop "
+            />
+
+             <f:SimpleForm
+                title="MultiValue F4Help"
+                editable="true"
+                layout="ResponsiveGridLayout"
+                labelSpanL="2"
+                labelSpanM="2"
+                emptySpanL="6"
+                emptySpanM="6"
+            >
+                <f:content>
+                   
+                    <Label text="Employee ID" />
+                    <Input id="idEmpID" showValueHelp="true" valueHelpRequest="onPressValueHelp" ></Input>
+                   
+                </f:content>
+            </f:SimpleForm>
+
+
             <Text
                 id="idH1"
                 text="FIORI V22 select rows from table"
