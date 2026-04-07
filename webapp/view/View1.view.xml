@@ -11,6 +11,84 @@
         title="{i18n>title}"
     >
         <content>
+            <Text
+                id="idH1"
+                text="FIORI V22 select rows from table"
+                textAlign="Center"
+                width="100%"
+                class="sapMH2FontSize sapUiLargeMarginTop "
+            />
+         <ScrollContainer
+                vertical="true"
+                horizontal="true"
+            >
+                <Table id="idTable" items="{/EmployeeSet}" mode="MultiSelect" >
+                    <headerToolbar>
+                        <Toolbar>
+                            <Title text="Employee List  Using OData Model" />
+                            <ToolbarSpacer ></ToolbarSpacer>
+                            <Button text="Get Selected Data" press="getSelEmpData" ></Button>
+                        </Toolbar>
+                    </headerToolbar>
+                    <columns>
+                        <Column width="6rem">
+                            <Text text="Employee ID" />
+                        </Column>
+                        <Column width="8rem">
+                            <Text text="Name" />
+                        </Column>
+                        <Column width="13rem">
+                            <Text text="Designation" />
+                        </Column>
+                        <Column width="6rem">
+                            <Text text="Skill" />
+                        </Column>
+                        <Column width="10rem">
+                            <Text text="Email" />
+                        </Column>
+                        <Column width="10rem">
+                            <Text text="Phone" />
+                        </Column>
+                        <Column width="5rem">
+                            <Text text="Salary" />
+                        </Column>
+                        <Column width="8rem">
+                            <Text text="Doj" />
+                        </Column>
+                        <Column width="4rem">
+                            <Text text="Rating" />
+                        </Column>
+                        <Column width="8rem">
+                            <Text text="Status" />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem type="Active" press="onPressRow" >
+                            <cells>
+                              
+                                <Text text="{Empid}" />
+                                <Text text="{path:'Name', formatter:'.f.formatName'}" />
+                                <Text text="{Designation}" />
+                                <ObjectStatus text="{Skill}" state="{path:'Skill',formatter:'.f.colorSkill'}" />
+                                <Text text="{Email}" />
+                                <Text text="{Phone}" />
+                                <Text text="{Salary}" />
+                                <Text text="{path:'Doj' ,formatter:'.f.formatDate' }" />
+                                <Text text="{Rating}" />
+                                <!-- <Text text="{Status}" /> -->
+                                <ObjectStatus text="{Status}" state="{path:'Status',formatter:'.f.colorStatus'}" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </ScrollContainer>
+   <Text
+                id="idH2"
+                text="FIORI V21"
+                textAlign="Center"
+                width="100%"
+                class="sapMH2FontSize sapUiLargeMarginTop "
+            />
 
          <f:SimpleForm
                 title="MultiValue UI Element"
@@ -24,25 +102,25 @@
                 <f:content>
                    
                     <Label text="I am select Box" />
-                    <Select id="idSel" items="{/EmployeeSet}" >
+                    <Select id="idSel" items="{/EmployeeSet}" change="onSelFromSelectBox" >
                     <items>
                     <core:Item text="{Name}" key="{Name}" ></core:Item>
                     </items>
                     </Select>
                      <Label text="I am Combo Box" />
-                    <ComboBox  id="idCom" items="{/EmployeeSet}" >
+                    <ComboBox  id="idCb" items="{/EmployeeSet}" selectionChange="onSelFromCb" >
                     <items>
                     <core:Item text="{Skill}" key="{Skill}" ></core:Item>
                     </items>
                     </ComboBox>
                     <Label text="I am Multi Combo Box" />
-                    <MultiComboBox  id="idMCom"  items="{/EmployeeSet}" showSelectAll="true" >
+                    <MultiComboBox  id="idMCb"  items="{/EmployeeSet}" showSelectAll="true" selectionFinish="onSelFromMCB" >
                     <items>
                     <core:Item text="{Designation}" key="{Designation}" ></core:Item>
                     </items>
                     </MultiComboBox>
                      <Label text="I am Radio Button Group" />
-                    <RadioButtonGroup  id="idRBtn"  buttons="{/EmployeeSet}">
+                    <RadioButtonGroup  id="idRBtn"  buttons="{/EmployeeSet}" select="onSelFromRBtn" >
                     <buttons>
                     <RadioButton text="{Status}" ></RadioButton>
                     </buttons>

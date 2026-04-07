@@ -46,9 +46,35 @@ sap.ui.define([
         },
         multiValueForm(){
             var selBoxVal = this.getView().byId('idSel').getSelectedKey();
-            var cbValue = this.getView().byId('idCom').getSelectedKey();
-            var mcbValue = this.getView().byId('idMCom').getSelectedKeys();
+            var cbValue = this.getView().byId('idCb').getSelectedKey();
+            var mcbValue = this.getView().byId('idMCb').getSelectedKeys();
            var selIndex = this.getView().byId('idRBtn').getSelectedIndex();
+        },
+        onSelFromSelectBox(oEvent){
+             var selBoxVal = this.getView().byId('idSel').getSelectedKey();
+             //oEvent.getParameter('selectedItem').getKey();
+        },
+        onSelFromCb(){
+             var cbValue = this.getView().byId('idCb').getSelectedKey();
+             //oEvent.getParameter('selectedItem').getKey();
+        },
+        onSelFromMCB(){
+             var mcbValue = this.getView().byId('idMCb').getSelectedKeys();
+             //oEvent.getParameter('selectedItem').getKeys();
+        },
+        onSelFromRBtn(){
+             var selIndex = this.getView().byId('idRBtn').getSelectedIndex();
+        },
+        getSelEmpData(){
+            // var empId= this.getView().byId('idTable').getSelectedItem().getBindingContext().getProperty('Empid')
+            // var selBindingContext = this.getView().byId('idTable).getSelectedContext();
+            for(var i =0;i<selBindingContext.length;i++){
+                selBindingContext[i].getObject()
+            }
+        },
+        onPressRow(oEvent){
+          var empid = oEvent.getSource().getBindingContext().getProperty("Empid")
+
         }
     });
 });
