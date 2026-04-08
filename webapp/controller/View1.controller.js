@@ -2,8 +2,9 @@ sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "com/demo/p5sapui5/model/formatter",
     "sap/ui/model/Filter",
+    "sap/ui/model/Sorter",
     "sap/ui/export/Spreadsheet"
-], (Controller,formatter,Filter,Spreadsheet) => {
+], (Controller,formatter,Filter,Sorter,Spreadsheet) => {
     "use strict";
 
     return Controller.extend("com.demo.p5sapui5.controller.View1", {
@@ -69,7 +70,7 @@ sap.ui.define([
         },
         getSelEmpData(){
             // var empId= this.getView().byId('idTable').getSelectedItem().getBindingContext().getProperty('Empid')
-            // var selBindingContext = this.getView().byId('idTable).getSelectedContext();
+            var selBindingContext = this.getView().byId('idTable').getSelectedContext();
             for(var i =0;i<selBindingContext.length;i++){
                 selBindingContext[i].getObject()
             }
@@ -97,14 +98,15 @@ sap.ui.define([
         },
         onPressGo(){
             var aFilters =[];
+            var aSorters=[];
             var empId = this.getView().byId('idEmpID').getValue();
              var name = this.getView().byId('idName').getValue();
               var desig = this.getView().byId('idDesig').getSelectedKey();
                var skill = this.getView().byId('idSkill').getSelectedKey();
                var salOpr = this.getView().byId('idSalOpr').getSelectedKey();
                var salary = this.getView().byId('idSalary').getValue();
-               var doj = this.getView().byId('idDoj').getDateValue();
-               doj = formatter.formatDateFilter(doj)
+            //    var doj = this.getView().byId('idDoj').getDateValue();
+            //    doj = formatter.formatDateFilter(doj)
             if(empId!==""){
                aFilters.push(new Filter("Empid","EQ",empId));
             }
@@ -120,20 +122,32 @@ sap.ui.define([
             if(salary!==""){
                 aFilters.push(new Filter("Salary",salOpr,salary))
             }
-            if(doj!==""){
-                aFilters.push(new Filter("Doj",'EQ',doj) )
-            }
+            // if(doj!==""){
+            //     aFilters.push(new Filter("Doj",'EQ',doj) )
+            // }
             this.getView().byId("idTable").getBinding('items').filter(aFilters);
+
+            // Sorting
+            var sortField = this.getView().byId('idSortField').getSelectedKey();
+            var sortOrder = this.getView().byId('idSortOrder').getSelectedIndex();
+           
+            if(sortField!=="" && sortOrder!== ""){
+                aSorters.push(new Sorter(sortField,(sortOrder === 0)? false:true))
+            }   
+            this.getView().byId("idTable").getBinding('items').sort(aSorters);
         },
         onPressReset(){
             this.getView().byId('idEmpID').setValue("");
             this.getView().byId('idName').setValue("");
             this.getView().byId('idDesig').setSelectedKey("");
             this.getView().byId('idSkill').setSelectedKey("");
-             this.getView().byId('idSalOpr').setSelectedKey("EQ");
-              this.getView().byId('idSalary').setValue("");
-              this.getView().byId('idDoj').setDateValue(null);
-             this.getView().byId("idTable").getBinding('items').filter([]);
+            this.getView().byId('idSalOpr').setSelectedKey("EQ");
+            this.getView().byId('idSalary').setValue("");
+            // this.getView().byId('idDoj').setDateValue(null);
+            this.getView().byId('idSortField').setSelectedKey("");
+            this.getView().byId('idSortOrder').setSelectedIndex(-1);
+            this.getView().byId("idTable").getBinding('items').filter([]);
+            this.getView().byId("idTable").getBinding('items').sort([]);
         },
         onPressExportToXL(){
             var aCols,oRowBinding,oSettings,oSheet;
@@ -188,7 +202,6 @@ sap.ui.define([
             oSheet.build().finally(function(){
                 oSheet.destroy();
             })
-
         }
     });
 });

@@ -18,10 +18,10 @@
                 title="MultiValue F4Help"
                 editable="true"
                 layout="ResponsiveGridLayout"
-                labelSpanL="2"
-                labelSpanM="2"
-                emptySpanL="6"
-                emptySpanM="6"
+                labelSpanL="4"
+                labelSpanM="4"
+                emptySpanL="3"
+                emptySpanM="3"
             >
                 <f:content>
                 <core:Title text="Filters:"></core:Title>
@@ -68,8 +68,32 @@
                     </items>
                     </Select>
                     <Input id="idSalary"></Input>
-                    <Label text="Date of Joining"></Label>
-                    <DatePicker id="idDoj"></DatePicker>
+                    <!-- <Label text="Date of Joining"></Label>
+                    <DatePicker id="idDoj"></DatePicker> -->
+
+
+                    <core:Title text="Sort:"></core:Title>
+                    <Label text="Sort Field"></Label>
+                    
+                    <ComboBox id="idSortField">
+                    <items>
+                    <core:Item text="Employee Id" key="Empid"></core:Item>
+                    <core:Item text="Name" key="Name"></core:Item>
+                    <core:Item text="Designation" key="Designation"></core:Item>
+                    <core:Item text="Skill" key="Skill"></core:Item>
+                    <core:Item text="Salary" key="Salary"></core:Item>
+                    <core:Item text="Date of Joining" key="Doj"></core:Item>
+                    <core:Item text="Rating" key="Rating"></core:Item>
+                    </items>
+                    </ComboBox>
+
+                    <Label text="Sort Order"></Label>
+                    <RadioButtonGroup id="idSortOrder" columns="2" selectedIndex="-1">
+                    <buttons>
+                    <RadioButton text="Ascending"></RadioButton>
+                    <RadioButton text="Descending"></RadioButton>
+                    </buttons>
+                    </RadioButtonGroup>
                    
                 </f:content>
             </f:SimpleForm> 
