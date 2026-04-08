@@ -1,8 +1,9 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "com/demo/p5sapui5/model/formatter",
-    "sap/ui/model/Filter"
-], (Controller,formatter,Filter) => {
+    "sap/ui/model/Filter",
+    "sap/ui/export/Spreadsheet"
+], (Controller,formatter,Filter,Spreadsheet) => {
     "use strict";
 
     return Controller.extend("com.demo.p5sapui5.controller.View1", {
@@ -102,6 +103,8 @@ sap.ui.define([
                var skill = this.getView().byId('idSkill').getSelectedKey();
                var salOpr = this.getView().byId('idSalOpr').getSelectedKey();
                var salary = this.getView().byId('idSalary').getValue();
+               var doj = this.getView().byId('idDoj').getDateValue();
+               doj = formatter.formatDateFilter(doj)
             if(empId!==""){
                aFilters.push(new Filter("Empid","EQ",empId));
             }
@@ -117,6 +120,9 @@ sap.ui.define([
             if(salary!==""){
                 aFilters.push(new Filter("Salary",salOpr,salary))
             }
+            if(doj!==""){
+                aFilters.push(new Filter("Doj",'EQ',doj) )
+            }
             this.getView().byId("idTable").getBinding('items').filter(aFilters);
         },
         onPressReset(){
@@ -126,7 +132,63 @@ sap.ui.define([
             this.getView().byId('idSkill').setSelectedKey("");
              this.getView().byId('idSalOpr').setSelectedKey("EQ");
               this.getView().byId('idSalary').setValue("");
+              this.getView().byId('idDoj').setDateValue(null);
              this.getView().byId("idTable").getBinding('items').filter([]);
+        },
+        onPressExportToXL(){
+            var aCols,oRowBinding,oSettings,oSheet;
+            oRowBinding = this.getView().byId('idTable').getBinding('items')
+            //place your table columns and odata properties
+            aCols = [{
+                label:'Employee Id',
+                property: 'Empid'
+            },{
+                label:'Name',
+                property: 'Name'
+            },{
+                label:'Designation',
+                property: 'Designation'
+            },{
+                label:'Skill',
+                property: 'Skill'
+            },{
+                label:'Email',
+                property: 'Email'
+            },{
+                label:'Phone.No',
+                property: 'Phone'
+            },{
+                label:'Status',
+                property: 'Status'
+            },{
+                label:'Rating',
+                property: 'Rating'
+            },{
+                label:'Date of Joining',
+                property: 'Doj',
+                type:'Date',
+                format:'dd-MM-yyyy'
+            },{
+                label:'Salary',
+                property: 'Salary',
+                type:'Number',
+                delimiter:true,
+                scale:2
+            }];
+
+            oSettings={
+                workbook:{
+                    columns:aCols
+                },
+                dataSource: oRowBinding,
+                fileName:'Employees.xlsx',
+                worker:true
+            };
+            oSheet = new Spreadsheet(oSettings);
+            oSheet.build().finally(function(){
+                oSheet.destroy();
+            })
+
         }
     });
 });

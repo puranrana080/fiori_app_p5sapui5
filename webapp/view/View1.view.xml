@@ -24,6 +24,7 @@
                 emptySpanM="6"
             >
                 <f:content>
+                <core:Title text="Filters:"></core:Title>
                    
                     <Label text="Employee ID" />
                     <Input id="idEmpID" showValueHelp="true" valueHelpRequest="onPressValueHelp" ></Input>
@@ -67,6 +68,8 @@
                     </items>
                     </Select>
                     <Input id="idSalary"></Input>
+                    <Label text="Date of Joining"></Label>
+                    <DatePicker id="idDoj"></DatePicker>
                    
                 </f:content>
             </f:SimpleForm> 
@@ -86,6 +89,7 @@
                             <Title text="Employee List  Using OData Model" />
                             <ToolbarSpacer ></ToolbarSpacer>
                             <Button text="Get Selected Data" press="getSelEmpData" ></Button>
+                            <Button icon="sap-icon://excel-attachment" press="onPressExportToXL" ></Button>
                         </Toolbar>
                     </headerToolbar>
                     <columns>
@@ -113,7 +117,7 @@
                         <Column width="8rem">
                             <Text text="Doj" />
                         </Column>
-                        <Column width="4rem">
+                        <Column width="10rem">
                             <Text text="Rating" />
                         </Column>
                         <Column width="8rem">
@@ -132,7 +136,7 @@
                                 <Text text="{Phone}" />
                                 <Text text="{Salary}" />
                                 <Text text="{path:'Doj' ,formatter:'.f.formatDate' }" />
-                                <Text text="{Rating}" />
+                                <RatingIndicator value="{Rating}"></RatingIndicator>
                                 <!-- <Text text="{Status}" /> -->
                                 <ObjectStatus text="{Status}" state="{path:'Status',formatter:'.f.colorStatus'}" />
                             </cells>
