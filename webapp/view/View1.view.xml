@@ -20,8 +20,10 @@
                 layout="ResponsiveGridLayout"
                 labelSpanL="4"
                 labelSpanM="4"
-                emptySpanL="3"
-                emptySpanM="3"
+                emptySpanL="0"
+                emptySpanM="0"
+                columnsL="3"
+                columnsM="2"
             >
                 <f:content>
                 <core:Title text="Filters:"></core:Title>
@@ -86,9 +88,29 @@
                     <core:Item text="Rating" key="Rating"></core:Item>
                     </items>
                     </ComboBox>
-
+<!-- Group -->
                     <Label text="Sort Order"></Label>
                     <RadioButtonGroup id="idSortOrder" columns="2" selectedIndex="-1">
+                    <buttons>
+                    <RadioButton text="Ascending"></RadioButton>
+                    <RadioButton text="Descending"></RadioButton>
+                    </buttons>
+                    </RadioButtonGroup>
+
+                     <core:Title text="Group:"></core:Title>
+                    <Label text="Group Field"></Label>
+                    
+                    <ComboBox id="idGroupField">
+                    <items>
+                   
+                    <core:Item text="Designation" key="Designation"></core:Item>
+                    <core:Item text="Skill" key="Skill"></core:Item>
+                
+                    </items>
+                    </ComboBox>
+
+                    <Label text="Group Order"></Label>
+                    <RadioButtonGroup id="idGroupOrder" columns="2" selectedIndex="-1">
                     <buttons>
                     <RadioButton text="Ascending"></RadioButton>
                     <RadioButton text="Descending"></RadioButton>
