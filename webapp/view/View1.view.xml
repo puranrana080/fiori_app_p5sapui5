@@ -27,6 +27,46 @@
                    
                     <Label text="Employee ID" />
                     <Input id="idEmpID" showValueHelp="true" valueHelpRequest="onPressValueHelp" ></Input>
+                    <Label text="Name"></Label>
+                    <Input id="idName"></Input>
+                    <Label text="Designation"></Label>
+                    <ComboBox id="idDesig" items="{/DesignationSet}">
+                    <items>
+                    <core:Item text="{Desig}" key="{Desig}"></core:Item>
+                    <!-- <core:Item text="SOFTWARE DEVELOPER" key="SOFTWARE DEVELOPER"></core:Item>
+                    <core:Item text="S D" key="S D"></core:Item>
+                    <core:Item text="TEAM LEAD" key="TEAM LEAD"></core:Item>
+                    <core:Item text="MANAGER" key="MANAGER"></core:Item>
+                    <core:Item text="CEO" key="CEO"></core:Item> -->
+                    
+                    </items>
+                    </ComboBox>
+                    
+                    <Label text="Skill"></Label>
+                    <!-- <Input id="idSkill"></Input> -->
+                    <ComboBox id="idSkill">
+                    <items>
+                    <core:Item text="ABAP" key="ABAP"></core:Item>
+                    <core:Item text="FIORI" key="FIORI"></core:Item>
+                    <core:Item text="SAPUI5" key="SAPUI5"></core:Item>
+                    <core:Item text="NODEJS" key="NODEJS"></core:Item>
+                    <core:Item text="JAVA" key="JAVA"></core:Item>
+                    
+                    
+                    </items>
+                    
+                    </ComboBox>
+                    <Label text="Salary"></Label>
+                    <Select id="idSalOpr">
+                    <items>
+                    <core:Item text="=" key="EQ"></core:Item>
+                    <core:Item text="&lt;" key="LT"></core:Item>
+                    <core:Item text="&gt;" key="GT"></core:Item>
+                    <core:Item text="&lt;=" key="LE"></core:Item>
+                    <core:Item text="&gt;=" key="GE"></core:Item>
+                    </items>
+                    </Select>
+                    <Input id="idSalary"></Input>
                    
                 </f:content>
             </f:SimpleForm> 

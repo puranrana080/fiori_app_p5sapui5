@@ -97,13 +97,35 @@ sap.ui.define([
         onPressGo(){
             var aFilters =[];
             var empId = this.getView().byId('idEmpID').getValue();
+             var name = this.getView().byId('idName').getValue();
+              var desig = this.getView().byId('idDesig').getSelectedKey();
+               var skill = this.getView().byId('idSkill').getSelectedKey();
+               var salOpr = this.getView().byId('idSalOpr').getSelectedKey();
+               var salary = this.getView().byId('idSalary').getValue();
             if(empId!==""){
                aFilters.push(new Filter("Empid","EQ",empId));
+            }
+            if(name!==""){
+               aFilters.push(new Filter("Name","EQ",name));
+            }
+            if(desig!==""){
+               aFilters.push(new Filter("Designation","EQ",desig));
+            }
+            if(skill!==""){
+               aFilters.push(new Filter("Skill","EQ",skill));
+            }
+            if(salary!==""){
+                aFilters.push(new Filter("Salary",salOpr,salary))
             }
             this.getView().byId("idTable").getBinding('items').filter(aFilters);
         },
         onPressReset(){
             this.getView().byId('idEmpID').setValue("");
+            this.getView().byId('idName').setValue("");
+            this.getView().byId('idDesig').setSelectedKey("");
+            this.getView().byId('idSkill').setSelectedKey("");
+             this.getView().byId('idSalOpr').setSelectedKey("EQ");
+              this.getView().byId('idSalary').setValue("");
              this.getView().byId("idTable").getBinding('items').filter([]);
         }
     });
