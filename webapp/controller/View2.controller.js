@@ -62,8 +62,34 @@ sap.ui.define([
                 this.getView().byId('idBtnEdit').setVisible(true)
                 this.getView().byId('idBtnDelete').setVisible(true)
             }
+            else if(mode =='edit'){
+                this.getView().byId('idBtnSave').setVisible(true)
+            this.getView().byId('idBtnCancel').setVisible(true)
+            }
         },
+        onPressCancel(){
+            if(this.mode === 'create' ){
+                //clear the form and go to first screen
+
+            }else if(this.mode==='edit'){
+                this.mode = 'display'
+                 this.loadFragment(this.mode)
+            this.handleButtonVisibility(this.mode)
+
+            }
+
+        },
+        onPressEdit(){
+            this.mode = 'edit'
+            this.loadFragment(this.mode)
+            this.handleButtonVisibility(this.mode)
+
+        },
+
+
+
          onPressSave(){
+            if(this.mode === "create"){
             var empId = this.getView().byId("idEmpId2").getValue();
             var name = this.getView().byId("idName2").getValue();
             var designation = this.getView().byId("idDesig2").getValue();
@@ -97,6 +123,47 @@ sap.ui.define([
                     MessageBox.error(JSON.parse(oError.responseText).error.message.value)
                 }
             })
+
+            }
+            else if(this.mode === "edit"){
+                 var empId = this.getView().byId("idEmpId1").getValue();
+            var name = this.getView().byId("idName1").getValue();
+            var designation = this.getView().byId("idDesig1").getValue();
+            var skill = this.getView().byId("idSkill1").getValue();
+            var email = this.getView().byId("idEmail1").getValue();
+            var phone = this.getView().byId("idPhone1").getValue();
+            var salary = this.getView().byId("idSalary1").getValue();
+            var doj = this.getView().byId("idDoj1").getDateValue();
+            doj = formatter.formatDateForCreateNUpdate(doj);
+            var status = this.getView().byId("idStatus1").getValue();
+            var rating = this.getView().byId("idRating1").getValue();
+
+            var data = {
+                Empid:empId,
+                Name:name,
+                Designation:designation,
+                Skill:skill,
+                Email:email,
+                Phone:phone,
+                Salary:salary,
+                Doj:doj,
+                Status:status,
+                Rating:rating
+            }
+            var oModel = this.getOwnerComponent().getModel();
+            oModel.update("/EmployeeSet('"+empId+"')",data,{
+                success:function(res){
+                    MessageBox.success('Employee Updated Successfully')
+                },
+                error:function(oError){
+                    MessageBox.error(JSON.parse(oError.responseText).error.message.value)
+                }
+            })
+
+            
+
+            }
+          
 
             
         },

@@ -27,7 +27,7 @@
                     <Label text="Salary"  />
                     <Input id="idSalary1" value="{Salary}" ></Input>
                     <Label text="Date of Joining"  />
-                    <DatePicker id="idDoj" value="{Doj}"  ></DatePicker>
+                    <DatePicker id="idDoj1" dateValue="{Doj}"  ></DatePicker>
                     <Label text="Status"  />
                     <Input id="idStatus1" value="{Status}"  ></Input>
                     <Label text="Rating"  />
