@@ -101,7 +101,7 @@
         },
         {
           "name": "RouteView2",
-          "pattern": "secondview",
+          "pattern": "view2/{key}",
           "target": [
             "TargetView2"
           ]

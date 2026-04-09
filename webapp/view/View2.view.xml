@@ -1,10 +1,45 @@
 <mvc:View controllerName="com.demo.p5sapui5.controller.View2"
     xmlns:mvc="sap.ui.core.mvc"
+    xmlns:f="sap.ui.layout.form"
     xmlns="sap.m">
-    <Page id="page2" title="View Two" showNavButton="true" navButtonPress="onBackToView1">
+    <Page id="page2" title="Employee Details" showNavButton="true" navButtonPress="onBackToView1">
     <content>
     <!-- <Button id="btn-2" text="Go to Page 1" press="backbutton" ></Button> -->
     <Text id="twotext" text="Welcome to SAPUI5" textAlign="Center" width="100%" class="sapMH2FontSize" />
+
+
+     <f:SimpleForm id="idSF"
+             title="Employee Details"  editable="true" layout="ResponsiveGridLayout" labelSpanL="4"
+                labelSpanM="4"
+                emptySpanL="0"
+                emptySpanM="0"
+                columnsL="3"
+                columnsM="2"
+            >
+                <f:content>
+                    <Label text="Employee ID"  />
+                    <Input id="idEmpId1" value="{Empid}" enabled="false" ></Input>
+                     <Label text="Name"  />
+                    <Input id="idName1" value="{Name}" enabled="false" ></Input>
+                     <Label text="Designation"  />
+                    <Input id="idDesig1" value="{Designation}" enabled="false" ></Input>
+                     <Label text="Skill"  />
+                    <Input id="idSkill1" value="{Skill}" enabled="false" ></Input>
+                     <Label text="Email"  />
+                    <Input id="idEmail1" value="{Email}" enabled="false" ></Input>
+                    <Label text="Phone No."  />
+                    <Input id="idPhone" value="{Phone}" enabled="false" ></Input>
+                    <Label text="Salary"  />
+                    <Input id="idSalary1" value="{Salary}" enabled="false" ></Input>
+                    <Label text="Date of Joining"  />
+                    <DatePicker id="idDoj" value="{Doj}" enabled="false" ></DatePicker>
+                    <Label text="Status"  />
+                    <Input id="idStatus1" value="{Status}" enabled="false" ></Input>
+                    <Label text="Rating"  />
+                    <RatingIndicator id="idRating1" value="{Rating}" enabled="false" ></RatingIndicator>       
+            </f:content>
+            </f:SimpleForm>
+        
 
     
     </content>
