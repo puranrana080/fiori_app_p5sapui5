@@ -167,6 +167,19 @@ sap.ui.define([
 
             
         },
+        onPressDelete(){
+            var empId = this.getView().getBindingContext().getProperty('Empid')
+             var oModel = this.getOwnerComponent().getModel();
+            oModel.remove("/EmployeeSet('"+empId+"')",{
+                success:function(res){
+                    MessageBox.success('Employee Deleted Successfully');
+                    this.getOwnerComponent().getRouter().navTo("RouteView1")
+                },
+                error:function(oError){
+                    MessageBox.error(JSON.parse(oError.responseText).error.message.value)
+                }
+            })
+        },
          onBackToView1() {
             // this.getOwnerComponent().getRouter().navTo("RouteView1")
             history.go(-1)
