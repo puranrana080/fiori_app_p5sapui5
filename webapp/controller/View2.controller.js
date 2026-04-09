@@ -1,6 +1,8 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller"
-], (Controller) => {
+    "sap/ui/core/mvc/Controller",
+    "com/demo/p5sapui5/model/formatter",
+    "sap/m/MessageBox"
+], (Controller,formatter,MessageBox) => {
     "use strict";
 
     return Controller.extend("com.demo.p5sapui5.controller.View2", {
@@ -13,7 +15,7 @@ sap.ui.define([
             var empId = oEvent.getParameter("arguments").key;
             if (empId === 'newemp') {
                 this.mode = 'create';
-                this.getView().unbindElement()
+
                 this.handleButtonVisibility(this.mode)
             } else {
                 this.mode = 'display';
@@ -24,7 +26,7 @@ sap.ui.define([
         },
         loadFragment(mode) {
             this.getView().byId('idPanel').removeAllContent();
-            if (mode === 'create' || mode === 'edit') {
+            if ( mode === 'edit') {
                 if (!this.editfrag) {
                     this.editfrag = sap.ui.xmlfragment(this.getView().getId(),"com.demo.p5sapui5.view.EmpEdit", this)
 
@@ -38,12 +40,14 @@ sap.ui.define([
                 }
                 this.getView().byId('idPanel').addContent(this.displayfrag)
             }
+              else if (mode === 'create') {
+                if (!this.createfrag) {
+                    this.createfrag = sap.ui.xmlfragment(this.getView().getId(), "com.demo.p5sapui5.view.EmpCreate", this)
+                }
+                this.getView().byId('idPanel').addContent(this.createfrag)
+            }
         },
-        onBackToView1() {
-            // this.getOwnerComponent().getRouter().navTo("RouteView1")
-            history.go(-1)
-
-        },
+       
         handleButtonVisibility(mode){
             this.getView().byId('idBtnEdit').setVisible(false)
             this.getView().byId('idBtnDisplay').setVisible(false)
@@ -58,6 +62,49 @@ sap.ui.define([
                 this.getView().byId('idBtnEdit').setVisible(true)
                 this.getView().byId('idBtnDelete').setVisible(true)
             }
+        },
+         onPressSave(){
+            var empId = this.getView().byId("idEmpId2").getValue();
+            var name = this.getView().byId("idName2").getValue();
+            var designation = this.getView().byId("idDesig2").getValue();
+            var skill = this.getView().byId("idSkill2").getValue();
+            var email = this.getView().byId("idEmail2").getValue();
+            var phone = this.getView().byId("idPhone2").getValue();
+            var salary = this.getView().byId("idSalary2").getValue();
+            var doj = this.getView().byId("idDoj2").getDateValue();
+            doj = formatter.formatDateForCreateNUpdate(doj);
+            var status = this.getView().byId("idStatus2").getValue();
+            var rating = this.getView().byId("idRating2").getValue();
+
+            var data = {
+                Empid:empId,
+                Name:name,
+                Designation:designation,
+                Skill:skill,
+                Email:email,
+                Phone:phone,
+                Salary:salary,
+                Doj:doj,
+                Status:status,
+                Rating:rating
+            }
+            var oModel = this.getOwnerComponent().getModel();
+            oModel.create("/EmployeeSet",data,{
+                success:function(req,res){
+                    MessageBox.success('New Employee Created Successfully')
+                },
+                error:function(oError){
+                    MessageBox.error(JSON.parse(oError.responseText).error.message.value)
+                }
+            })
+
+            
+        },
+         onBackToView1() {
+            // this.getOwnerComponent().getRouter().navTo("RouteView1")
+            history.go(-1)
+
         }
+       
     });
 });

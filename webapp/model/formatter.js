@@ -23,14 +23,21 @@ sap.ui.define([],function(){
             var oDateFormat = sap.ui.core.format.DateFormat.getDateTimeInstance({
                 pattern: "dd-MM-yyyy"
             },sap.ui.getCore().getConfiguration().getLocale() );
-            return oDateFormat.format(new Date(Doj));
+            return oDateFormat.format(Doj);
 
         },
         formatDateFilter:function(Doj){
             var oDateFormat = sap.ui.core.format.DateFormat.getDateTimeInstance({
                 pattern: "yyyy-MM-dd"
             },sap.ui.getCore().getConfiguration().getLocale() );
-            return oDateFormat.format(new Date(Doj));
+            return oDateFormat.format(Doj);
+
+        },
+        formatDateForCreateNUpdate(Doj){
+             var oDateFormat = sap.ui.core.format.DateFormat.getDateTimeInstance({
+                pattern: "yyyy-MM-ddT00:00:00"
+            },sap.ui.getCore().getConfiguration().getLocale() );
+            return oDateFormat.format(Doj);
 
         }
     }

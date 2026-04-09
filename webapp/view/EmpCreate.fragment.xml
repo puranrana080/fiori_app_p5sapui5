@@ -3,7 +3,7 @@
     xmlns:core="sap.ui.core"
     xmlns:f="sap.ui.layout.form"
 >
-    <f:SimpleForm id="idSF1"
+    <f:SimpleForm 
              title="Employee Details"  editable="true" layout="ResponsiveGridLayout" labelSpanL="4"
                 labelSpanM="4"
                 emptySpanL="3"
@@ -13,25 +13,25 @@
             >
                 <f:content>
                     <Label text="Employee ID"  />
-                    <Input id="idEmpId1" value="{Empid}" ></Input>
+                    <Input id="idEmpId2" required="true" ></Input>
                      <Label text="Name"  />
-                    <Input id="idName1" value="{Name}"  ></Input>
+                    <Input id="idName2" required="true"></Input>
                      <Label text="Designation"  />
-                    <Input id="idDesig1" value="{Designation}"  ></Input>
+                    <Input id="idDesig2"  required="true" ></Input>
                      <Label text="Skill"  />
-                    <Input id="idSkill1" value="{Skill}"  ></Input>
+                    <Input id="idSkill2" required="true"  ></Input>
                      <Label text="Email"  />
-                    <Input id="idEmail1" value="{Email}"  ></Input>
+                    <Input id="idEmail2" required="true"  ></Input>
                     <Label text="Phone No."  />
-                    <Input id="idPhone1" value="{Phone}"  ></Input>
+                    <Input id="idPhone2" required="true"  ></Input>
                     <Label text="Salary"  />
-                    <Input id="idSalary1" value="{Salary}" ></Input>
+                    <Input id="idSalary2" required="true" ></Input>
                     <Label text="Date of Joining"  />
-                    <DatePicker id="idDoj" value="{Doj}"  ></DatePicker>
+                    <DatePicker id="idDoj2" required="true" ></DatePicker>
                     <Label text="Status"  />
-                    <Input id="idStatus1" value="{Status}"  ></Input>
+                    <Input id="idStatus2" required="true" ></Input>
                     <Label text="Rating"  />
-                    <RatingIndicator id="idRating1" value="{Rating}"  ></RatingIndicator>       
+                    <RatingIndicator id="idRating2"  required="true" ></RatingIndicator>       
             </f:content>
             </f:SimpleForm>
 </core:FragmentDefinition>
