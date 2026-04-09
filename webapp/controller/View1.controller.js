@@ -12,17 +12,17 @@ sap.ui.define([
         onInit() {
             this.getOwnerComponent().readEmployees()
             this.mGroupFunctions = {
-                Skill:function(oContext){
+                Skill: function (oContext) {
                     var skill = oContext.getProperty("Skill");
                     return {
-                        key:skill,
+                        key: skill,
                         text: skill
                     }
                 },
-                 Designation:function(oContext){
+                Designation: function (oContext) {
                     var desig = oContext.getProperty("Designation");
                     return {
-                        key:desig,
+                        key: desig,
                         text: desig
                     }
                 }
@@ -92,10 +92,14 @@ sap.ui.define([
                 selBindingContext[i].getObject()
             }
         },
+        onPressCreateEmp() {
+            this.getOwnerComponent().getRouter().navTo("RouteView2", { key: 'newemp' })
+
+        },
         onPressRow(oEvent) {
-            var empid = oEvent.getSource().getBindingContext().getProperty("Empid")
+            var empId = oEvent.getSource().getBindingContext().getProperty("Empid")
             // this.getView().byId('idSF').bindElement("/EmployeeSet('"+empid+"')")
-            this.getOwnerComponent().getRouter().navTo("RouteView2",{key:empid})
+            this.getOwnerComponent().getRouter().navTo("RouteView2", { key: empId })
 
         },
         onPressRowFromF4HelpTable(oEvent) {
@@ -147,12 +151,12 @@ sap.ui.define([
             this.getView().byId("idTable").getBinding('items').filter(aFilters);
             // Grouping goes first
 
-             var groupField = this.getView().byId('idGroupField').getSelectedKey();
+            var groupField = this.getView().byId('idGroupField').getSelectedKey();
             var groupOrder = this.getView().byId('idGroupOrder').getSelectedIndex();
 
             if (groupField !== "" && groupOrder !== "") {
                 var vGroup = this.mGroupFunctions[groupField]
-                aSorters.push(new Sorter(groupField, (groupOrder === 0) ? false : true,vGroup))
+                aSorters.push(new Sorter(groupField, (groupOrder === 0) ? false : true, vGroup))
             }
 
 
