@@ -8,9 +8,35 @@ sap.ui.define([
     return Controller.extend("com.demo.p5sapui5.controller.View2", {
         onInit() {
             this.getOwnerComponent().getRouter().getRoute("RouteView2").attachPatternMatched(this.onPatternMatched, this);
-            //   this.getView().byId('idSF').bindElement("/EmployeeSet('"+empid+"')")
+           this.prjModel = this.getOwnerComponent().getModel('prjModel');
+           this.prjModel.setData({
+            aProjects:[  
+            
+            ]
+           })
 
         },
+        
+        onPressAddRow(){
+            this.prjModel.getData().aProjects.push({
+                    Empid:'',
+                    Prjcode:'',
+                    Clientname:'',
+                    Prjname:'',
+                    Prjdesc:'',
+                    Teamsize:0
+                });
+                this.prjModel.refresh(true)
+
+        },
+        onPressDeleteRow(oEvent){
+            var index = oEvent.getSource().getParent().getBindingContextPath().split("/")[2];
+            this.prjModel.getData().aProjects.splice(index,1)
+            this.prjModel.refresh(true)
+
+
+        },
+
         onPatternMatched(oEvent) {
             var empId = oEvent.getParameter("arguments").key;
             if (empId === 'newemp') {
@@ -112,7 +138,9 @@ sap.ui.define([
                 Salary:salary,
                 Doj:doj,
                 Status:status,
-                Rating:rating
+                Rating:rating,
+                toProjects:this.prjModel.getData().aProjects
+
             }
             var oModel = this.getOwnerComponent().getModel();
             oModel.create("/EmployeeSet",data,{
