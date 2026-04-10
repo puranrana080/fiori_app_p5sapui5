@@ -14,6 +14,26 @@ sap.ui.define([
             
             ]
            })
+            this.editPrjModel = this.getOwnerComponent().getModel('editPrjModel');
+        },
+       
+         onPressAddRowForEdit(){
+            this.editPrjModel.getData().results.push({
+                    Empid:'',
+                    Prjcode:'',
+                    Clientname:'',
+                    Prjname:'',
+                    Prjdesc:'',
+                    Teamsize:0
+                });
+                this.editPrjModel.refresh(true)
+
+        },
+          onPressDeleteRowForEdit(oEvent){
+            var index = oEvent.getSource().getParent().getBindingContextPath().split("/")[2];
+            this.editPrjModel.getData().results.splice(index,1)
+            this.editPrjModel.refresh(true)
+
 
         },
         
@@ -36,6 +56,7 @@ sap.ui.define([
 
 
         },
+      
 
         onPatternMatched(oEvent) {
             var empId = oEvent.getParameter("arguments").key;
@@ -105,7 +126,20 @@ sap.ui.define([
             }
 
         },
+          readProjectOfEmp(){
+            var empId = this.getView().getBindingContext().getProperty('Empid')
+            var oModel = this.getOwnerComponent().getModel();
+            oModel.read("/EmployeeSet('"+ empId +"')/toProjects",{
+                success:function(data){
+                    this.editPrjModel.setData(data)
+                }.bind(this),error:function(oError){
+                    MessageBox.error("Unable to fetch the projects information")
+                }
+            })
+            
+        },
         onPressEdit(){
+            this.readProjectOfEmp()
             this.mode = 'edit'
             this.loadFragment(this.mode)
             this.handleButtonVisibility(this.mode)
@@ -176,10 +210,11 @@ sap.ui.define([
                 Salary:salary,
                 Doj:doj,
                 Status:status,
-                Rating:rating
+                Rating:rating,
+                toProjects:this.editPrjModel.getData().results
             }
             var oModel = this.getOwnerComponent().getModel();
-            oModel.update("/EmployeeSet('"+empId+"')",data,{
+            oModel.create("/EmployeeSet",data,{
                 success:function(res){
                     MessageBox.success('Employee Updated Successfully')
                 },
