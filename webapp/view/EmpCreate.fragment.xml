@@ -2,89 +2,144 @@
     xmlns="sap.m"
     xmlns:core="sap.ui.core"
     xmlns:f="sap.ui.layout.form"
+    xmlns:u="sap.ui.unified"
 >
-<VBox >
-    <f:SimpleForm 
-             title="Employee Details"  editable="true" layout="ResponsiveGridLayout" labelSpanL="4"
-                labelSpanM="4"
-                emptySpanL="3"
-                emptySpanM="3"
-                columnsL="3"
-                columnsM="2"
-            >
-                <f:content>
-                    <Label text="Employee ID"  />
-                    <Input id="idEmpId2" required="true" ></Input>
-                     <Label text="Name"  />
-                    <Input id="idName2" required="true"></Input>
-                     <Label text="Designation"  />
-                    <Input id="idDesig2"  required="true" ></Input>
-                     <Label text="Skill"  />
-                    <Input id="idSkill2" required="true"  ></Input>
-                     <Label text="Email"  />
-                    <Input id="idEmail2" required="true"  ></Input>
-                    <Label text="Phone No."  />
-                    <Input id="idPhone2" required="true"  ></Input>
-                    <Label text="Salary"  />
-                    <Input id="idSalary2" required="true" ></Input>
-                    <Label text="Date of Joining"  />
-                    <DatePicker id="idDoj2" required="true" ></DatePicker>
-                    <Label text="Status"  />
-                    <Input id="idStatus2" required="true" ></Input>
-                    <Label text="Rating"  />
-                    <RatingIndicator id="idRating2"  required="true" ></RatingIndicator>       
+    <VBox>
+        <f:SimpleForm
+            title="Employee Details"
+            editable="true"
+            layout="ResponsiveGridLayout"
+            labelSpanL="4"
+            labelSpanM="4"
+            emptySpanL="3"
+            emptySpanM="3"
+            columnsL="3"
+            columnsM="2"
+        >
+            <f:content>
+                <Label text="Employee ID" />
+                <Input
+                    id="idEmpId2"
+                    required="true"
+                />
+                <Label text="Name" />
+                <Input
+                    id="idName2"
+                    required="true"
+                />
+                <Label text="Designation" />
+                <Input
+                    id="idDesig2"
+                    required="true"
+                />
+                <Label text="Skill" />
+                <Input
+                    id="idSkill2"
+                    required="true"
+                />
+                <Label text="Email" />
+                <Input
+                    id="idEmail2"
+                    required="true"
+                />
+                <Label text="Phone No." />
+                <Input
+                    id="idPhone2"
+                    required="true"
+                />
+                <Label text="Salary" />
+                <Input
+                    id="idSalary2"
+                    required="true"
+                />
+                <Label text="Date of Joining" />
+                <DatePicker
+                    id="idDoj2"
+                    required="true"
+                />
+                <Label text="Status" />
+                <Input
+                    id="idStatus2"
+                    required="true"
+                />
+                <Label text="Rating" />
+                <RatingIndicator
+                    id="idRating2"
+                    required="true"
+                />
             </f:content>
-            </f:SimpleForm>
+        </f:SimpleForm>
 
         <Table items="{prjModel>/aProjects}">
-        <headerToolbar>
-        <Toolbar >
-        <Title text="Add Project"></Title>
-        <ToolbarSpacer></ToolbarSpacer>
-        <Button icon="sap-icon://add" type="Emphasized" press="onPressAddRow"></Button>
-        </Toolbar>
-        </headerToolbar>
-       <columns>
-       <Column >
-       <Text text="Employee Id"></Text>
-       </Column>
-         <Column >
-       <Text text="Project Code"></Text>
-       </Column>
-         <Column >
-       <Text text="Client Name"></Text>
-       </Column>
-         <Column >
-       <Text text="Project Name"></Text>
-       </Column>
-         <Column >
-       <Text text="Project Description"></Text>
-       </Column>
-           <Column >
-       <Text text="Count"></Text>
-       </Column>
-       <Column >
-       <Text text="Delete"></Text>
-       </Column>
-       
-       </columns>
-       <items>
-       
-       <ColumnListItem >
-       <cells>
-       <Input value="{prjModel>Empid}"></Input>
-       <Input value="{prjModel>Prjcode}"></Input>
-       <Input value="{prjModel>Prjname}"></Input>
-       <Input value="{prjModel>Clientname}"></Input>
-       <Input value="{prjModel>Prjdesc}"></Input>
-         <Input value="{prjModel>Teamsize}"></Input>
-         <Button icon="sap-icon://delete" type="Reject" press="onPressDeleteRow"></Button>
-       </cells>
-       
-       </ColumnListItem>
-       </items>
-
-        
+            <headerToolbar>
+                <Toolbar>
+                    <Title text="Add Project" />
+                    <ToolbarSpacer />
+                    <Button
+                        icon="sap-icon://add"
+                        type="Emphasized"
+                        press="onPressAddRow"
+                    />
+                </Toolbar>
+            </headerToolbar>
+            <columns>
+                <Column>
+                    <Text text="Employee Id" />
+                </Column>
+                <Column>
+                    <Text text="Project Code" />
+                </Column>
+                <Column>
+                    <Text text="Client Name" />
+                </Column>
+                <Column>
+                    <Text text="Project Name" />
+                </Column>
+                <Column>
+                    <Text text="Project Description" />
+                </Column>
+                <Column>
+                    <Text text="Count" />
+                </Column>
+                <Column>
+                    <Text text="Delete" />
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <Input value="{prjModel>Empid}" />
+                        <Input value="{prjModel>Prjcode}" />
+                        <Input value="{prjModel>Prjname}" />
+                        <Input value="{prjModel>Clientname}" />
+                        <Input value="{prjModel>Prjdesc}" />
+                        <Input value="{prjModel>Teamsize}" />
+                        <Button
+                            icon="sap-icon://delete"
+                            type="Reject"
+                            press="onPressDeleteRow"
+                        />
+                    </cells>
+                </ColumnListItem>
+            </items>
         </Table>
-        </VBox>
+        <f:SimpleForm
+            editable="true"
+            title="Add the profile Picture"
+             layout="ResponsiveGridLayout"
+            labelSpanL="5"
+            labelSpanM="5"
+            emptySpanL="3"
+            emptySpanM="3"
+        >
+            <f:content>
+            <Label text="Select the photo"></Label>
+            <u:FileUploader id="idFileUploader2" uploadUrl="/sap/opu/odata/sap/ZP5_EMP_SRV/PhotoSet" sendXHR="true" 
+            change="onChangeFile" uploadComplete="onPhotoUploadComplete"
+            useMultipart="false" width="200px"></u:FileUploader>
+            <Label ></Label>
+            <Button icon="sap-icon://upload" text="Upload" width="150px" type="Emphasized" press="onUploadPhoto"></Button>
+            </f:content>
+        </f:SimpleForm>
+    </VBox>
 </core:FragmentDefinition>

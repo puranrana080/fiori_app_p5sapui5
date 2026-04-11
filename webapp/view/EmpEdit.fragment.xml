@@ -2,6 +2,7 @@
     xmlns="sap.m"
     xmlns:core="sap.ui.core"
     xmlns:f="sap.ui.layout.form"
+    xmlns:u="sap.ui.unified"
 >
 <VBox >
     <f:SimpleForm id="idSF1"
@@ -83,8 +84,24 @@
        
        </ColumnListItem>
        </items>
-
-        
         </Table>
+          <f:SimpleForm
+            editable="true"
+            title="Edit the profile Picture"
+             layout="ResponsiveGridLayout"
+            labelSpanL="5"
+            labelSpanM="5"
+            emptySpanL="3"
+            emptySpanM="3"
+        >
+            <f:content>
+            <Label text="Select the photo"></Label>
+            <u:FileUploader id="idFileUploader" uploadUrl="/sap/opu/odata/sap/ZP5_EMP_SRV/PhotoSet" sendXHR="true" 
+            change="onChangeFile" uploadComplete="onPhotoUploadComplete"
+            useMultipart="false" width="200px"></u:FileUploader>
+            <Label ></Label>
+            <Button icon="sap-icon://upload" text="Upload" width="150px" type="Emphasized" press="onUploadPhoto"></Button>
+            </f:content>
+        </f:SimpleForm>
         </VBox>
 </core:FragmentDefinition>
