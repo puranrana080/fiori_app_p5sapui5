@@ -1,0 +1,110 @@
+<mvc:View
+    controllerName="com.demo.p5sapui5.controller.View4"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core='sap.ui.core'
+    xmlns:f="sap.ui.layout.form"
+    xmlns:u="sap.ui.unified"
+>   
+    <Page
+        id="page4"
+        title="Batch Operations"
+        showNavButton="true"
+        navButtonPress="onBackToView1"
+    >
+        <content>
+          
+            <Text
+                id="view4"
+                text="Welcome to SAPUI5 view4"
+                textAlign="Center"
+                width="100%"
+                class="sapMH2FontSize"
+            />
+            <f:SimpleForm editable="true" >
+            <f:content>
+            
+            <Label text="Select the file to upload"  > </Label>
+            <u:FileUploader id="fileUploader" uploadOnChange="true" buttonText="Browse" icon="sap-icon://upload" change="onSelectFile"> 
+            </u:FileUploader>
+           
+            </f:content>
+            
+            </f:SimpleForm>
+
+
+            <Table items="{batchModel>/aEmployees}" class="sapUiMediumMarginTop" >
+          
+            <columns>
+            <Column >
+            <Text text="Employee Id"></Text>
+            </Column>
+             <Column >
+            <Text text="Name"></Text>
+            </Column>
+             <Column >
+            <Text text="Designation"></Text>
+            </Column>
+             <Column >
+            <Text text="Skill"></Text>
+            </Column>
+             <Column >
+            <Text text="Email Id"></Text>
+            </Column>
+             <Column >
+            <Text text="Phone No"></Text>
+            </Column>
+            <Column >
+            <Text text="Date Of Joining"></Text>
+            </Column>
+             <Column >
+            <Text text="Salary"></Text>
+            </Column>
+             <Column >
+            <Text text="Status"></Text>
+            </Column>
+             <Column >
+            <Text text="Rating"></Text>
+            </Column>
+            </columns>
+            <items>
+            <ColumnListItem >
+            <cells>
+            <Input value="{batchModel>Empid}"></Input>
+            <Input value="{batchModel>Name}"></Input>
+            <Input value="{batchModel>Designation}"></Input>
+            <Input value="{batchModel>Skill}"></Input>
+            <Input value="{batchModel>Email}"></Input>
+            <Input value="{batchModel>Phone}"></Input>
+            <DatePicker dateValue="{path:'batchModel>Doj'}"></DatePicker>
+            <Input value="{path:'batchModel>Salary'}"></Input>
+            <Input value="{batchModel>Status}"></Input>
+            <Input value="{batchModel>Rating}"></Input>
+          
+
+            </cells>
+            </ColumnListItem>
+            </items>
+            
+            
+            </Table>
+
+        
+          
+
+           
+        </content>
+          <footer>
+            <Bar>
+                <contentRight>
+                    <Button
+                       
+                        text="Submit Batch"
+                        type="Accept"
+                        press="onSubmitBatchReq"
+                    />
+                </contentRight>
+            </Bar>
+        </footer>
+    </Page>
+</mvc:View>

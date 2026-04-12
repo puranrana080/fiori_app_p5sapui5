@@ -37,6 +37,9 @@ sap.ui.define([
              this.getOwnerComponent().getRouter().navTo("RouteView3")
 
         },
+        goToBatchOprView(){
+            this.getOwnerComponent().getRouter().navTo("RouteView4")
+        },
         onSubmit1() {
             var name = this.getView().byId("idIpName").getValue();
             var msg = "Welcome to " + name;

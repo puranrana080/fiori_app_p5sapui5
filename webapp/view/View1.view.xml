@@ -134,6 +134,7 @@
                         <Toolbar>
                             <Title text="Employee List  Using OData Model" />
                             <ToolbarSpacer ></ToolbarSpacer>
+                            <Button text="Create Bulk Employees" type="Emphasized" icon="sap-icon://collaborate" press="goToBatchOprView" ></Button>
                             <Button text="Compare Salaries" type="Reject" press="goToChartView" ></Button>
                             <Button text="Create Employee" press="onPressCreateEmp" ></Button>
                             <Button icon="sap-icon://excel-attachment" press="onPressExportToXL" ></Button>
