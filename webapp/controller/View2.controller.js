@@ -280,10 +280,10 @@ sap.ui.define([
 
         },
         onPhotoUploadComplete(oEvent) {
-             // ✅ Correct
-  
-            var status = oEvent.getParameter('status')
-            if (status === 201 || status === 202 || status === 204) {
+            // ✅ Correct
+
+            var status = oEvent.getParameters('status').status
+            if ( status===200 || status === 201 || status === 202 || status === 204) {
                 MessageBox.success("Your Profile Picture uploaded successfully");
 
             } else {
@@ -291,10 +291,57 @@ sap.ui.define([
             }
 
         },
-        onPressPhoto(){
+        onPressPhoto() {
             var empId = this.getView().getBindingContext().getProperty('Empid')
-var url = "/sap/opu/odata/sap/ZP5_EMP_SRV/PhotoSet('"+empId+"')/$value"
-sap.m.URLHelper.redirect(url,false)
+            var url = "/sap/opu/odata/sap/ZP5_EMP_SRV/PhotoSet('" + empId + "')/$value"
+            sap.m.URLHelper.redirect(url, false)
+        },
+        onPressDownload(oEvent){
+            var empId = oEvent.getSource().getParent().getBindingContext().getProperty('Empid')
+            var fileName = oEvent.getSource().getParent().getBindingContext().getProperty('Filename')
+             var url = "/sap/opu/odata/sap/ZP5_EMP_SRV/ResumeSet(Empid='"+empId+"',Filename='"+fileName+"')/$value"
+            sap.m.URLHelper.redirect(url, false)
+
+        },
+        //resume upload code
+        uploadResumes(){
+             var oUploadSet = this.getView().byId('idUploadSet')
+            var empId = this.getView().byId('idEmpId1').getValue();
+            var slug = empId + "," + this.fileName
+            var aInCompleteItems =oUploadSet.getIncompleteItems();
+
+            for(var i =0;i<aInCompleteItems.length;i++){
+                var slug = empId + ","+ aInCompleteItems[i].getFileName();
+
+                //step1 construct slug
+                 var oSlug = new sap.ui.core.Item({
+                    key:"SLUG",
+                    text:slug
+                 })
+                 oUploadSet.addHeaderField(oSlug)
+
+                 //step2 csrf token
+                 this.getOwnerComponent().getModel().refreshSecurityToken();
+                 var oXCSRFToken = new sap.ui.core.Item({
+                    key:"X-CSRF-Token",
+                    text:this.getOwnerComponent().getModel().getSecurityToken()
+                 })
+                 oUploadSet.addHeaderField(oXCSRFToken);
+                 oUploadSet.uploadItem(aInCompleteItems[i])
+                 oUploadSet.removeAllHeaderFields();
+                }
+
+        },
+        onResumeUploadCompleted(oEvent){
+            
+            var status = oEvent.getParameter('status')
+            if ( status===200 || status === 201 || status === 202 || status === 204) {
+                MessageBox.success("Your Resume uploaded successfully");
+
+            } else {
+                MessageBox.error("File Upload Failed ,Please check internet connectivity and try again")
+            }
+
         },
 
         onBackToView1() {

@@ -32,6 +32,11 @@ sap.ui.define([
         onPress() {
             this.getOwnerComponent().getRouter().navTo("RouteView2")
         },
+
+        goToChartView(){
+             this.getOwnerComponent().getRouter().navTo("RouteView3")
+
+        },
         onSubmit1() {
             var name = this.getView().byId("idIpName").getValue();
             var msg = "Welcome to " + name;

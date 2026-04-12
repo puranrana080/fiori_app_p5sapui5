@@ -1,0 +1,73 @@
+<mvc:View
+    controllerName="com.demo.p5sapui5.controller.View3"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core='sap.ui.core'
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:viz.data="sap.viz.ui5.data"
+    xmlns:viz.feed="sap.viz.ui5.controls.common.feeds"
+>
+    <Page
+        id="page3"
+        title="Salary-Chart"
+        showNavButton="true"
+        navButtonPress="onBackToView1"
+    >
+        <content>
+            <!-- <Button id="btn-2" text="Go to Page 1" press="backbutton" ></Button> -->
+            <Text
+                id="view3"
+                text="Welcome to SAPUI5 view3"
+                textAlign="Center"
+                width="100%"
+                class="sapMH2FontSize"
+            />
+            <Select id="idChartType" change="onChangeChartType">
+            <items>
+            <core:Item text="Column Chart" key="column" ></core:Item>
+            <core:Item text="Bar Chart" key="bar" ></core:Item>
+            <core:Item text="Line Chart" key="line" ></core:Item>
+            <core:Item text="Pie Chart" key="pie" ></core:Item>
+            </items>
+            </Select>
+
+            <viz:VizFrame
+                id="idVizFrame"
+                uiConfig="{applicationSet:'fiori'}"
+                vizType="column"
+                width="100%"
+                height="100%"
+            >
+                <viz:dataset>
+                    <viz.data:FlattenedDataset data="{/EmployeeSet}">
+                        <viz.data:dimensions>
+                            <viz.data:DimensionDefinition
+                                name="employeeid"
+                                value="{Empid}"
+                            />
+                             <viz.data:DimensionDefinition
+                                name="employeename"
+                                value="{Name}"
+                            />
+                        </viz.data:dimensions>
+                        <viz.data:measures>
+                            <viz.data:MeasureDefinition
+                                name="salary"
+                                value="{Salary}"
+                            />
+                              <viz.data:MeasureDefinition
+                                name="rating"
+                                value="{Rating}"
+                            />
+                        </viz.data:measures>
+                    </viz.data:FlattenedDataset>
+                </viz:dataset>
+                <viz:feeds>
+                  <viz.feed:FeedItem uid="categoryAxis" type="Dimention" values="employeeid,employeename" />
+                    <viz.feed:FeedItem uid="valueAxis" type="Measure" values="['salary','rating']" />
+                  
+                </viz:feeds>
+            </viz:VizFrame>
+        </content>
+    </Page>
+</mvc:View>
