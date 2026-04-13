@@ -35,8 +35,8 @@
                 id="idVizFrame"
                 uiConfig="{applicationSet:'fiori'}"
                 vizType="column"
-                width="100%"
-                height="100%"
+                width="400px"
+                height="400px"
             >
                 <viz:dataset>
                     <viz.data:FlattenedDataset data="{/EmployeeSet}">
@@ -63,7 +63,7 @@
                     </viz.data:FlattenedDataset>
                 </viz:dataset>
                 <viz:feeds>
-                  <viz.feed:FeedItem uid="categoryAxis" type="Dimension" values="['employeeid','employeename']" />
+                 <viz.feed:FeedItem uid="categoryAxis" type="Dimension" values="['employeeid']" />
                 <viz.feed:FeedItem uid="valueAxis" type="Measure" values="['salary','rating']" />
                   
                 </viz:feeds>

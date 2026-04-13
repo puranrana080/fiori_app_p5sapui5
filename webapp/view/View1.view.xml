@@ -12,7 +12,7 @@
     >
         <content>
 
-        <Panel headerText="Search Employees" expandable="true" expanded="true">
+        <Panel headerText="{i18n>search_emp}" expandable="true" expanded="true">
 
          <f:SimpleForm
                 title="MultiValue F4Help"

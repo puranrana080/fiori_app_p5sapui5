@@ -217,7 +217,7 @@ sap.ui.define([
                 var oModel = this.getOwnerComponent().getModel();
                 oModel.create("/EmployeeSet", data, {
                     success: function (res) {
-                        MessageBox.success('Employee Updated Successfully')
+                        MessageBox.success(this.getOwnerComponent().getModel("i18n").getResourceBundle().getText('Save_Updated'))
                     },
                     error: function (oError) {
                         MessageBox.error(JSON.parse(oError.responseText).error.message.value)

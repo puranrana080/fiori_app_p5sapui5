@@ -14,6 +14,13 @@
       "authenticationType": "none",
       "destination": "ui5"
     },
+     {
+      "source": "^/sap/(.*)$",
+      "target": "/sap/$1",
+      "destination": "ZP5_SYSTEM",
+      "authenticationType": "none",
+      "csrfProtection": false
+    },
     {
       "source": "^(.*)$",
       "target": "$1",
