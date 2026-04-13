@@ -4,6 +4,7 @@
     xmlns:f="sap.ui.layout.form"
     xmlns:u="sap.ui.unified"
     xmlns:up='sap.m.upload'
+    xmlns:pl="sap.m.plugins"
 >
 <VBox >
     <f:SimpleForm id="idSF1"
@@ -106,27 +107,51 @@
         </f:SimpleForm>
        
       <Panel headerText="Upload your Resume">
+<Table id="idResumeTable" noDataText="No Resumes Added">
 
-<upload:UploadItem id="idUploadItem" uploadUrl="/sap/opu/odata/sap/ZP5_EMP_SRV/PhotoSet" >
-</upload:UploadItem>
+        <dependents>
+            <pl:UploadSetwithTable
+                id="idUploadSet"
+                uploadUrl="/sap/opu/odata/sap/ZP5_EMP_SRV/ResumeSet"
+                uploadCompleted="onResumeUploadCompleted"
+                beforeUploadStarts="onBeforeUploadStarts"
+               
+                multiple="true"/>
+        </dependents>
 
+        <headerToolbar>
+            <Toolbar>
+                <ToolbarSpacer/>
+                <Button
+                    text="Add Files"
+                    icon="sap-icon://add"
+                    press="onAddResumeFiles"/>
+            </Toolbar>
+        </headerToolbar>
 
-<upload:UploadSet
-    id="idUploadSet"
-    uploadUrl="/sap/opu/odata/sap/ZP5_EMP_SRV/PhotoSet"
-    uploadCompleted="onResumeUploadCompleted"
-    beforeUploadStarts="onBeforeUploadStarts"
-    items="{path: '/'}"
->
-    <upload:UploadSetItem
-        fileName="{fileName}"
-        mediaType="{fileType}">
-    </upload:UploadSetItem>
-</upload:UploadSet>
-<FlexBox justifyContent="End">
-<Button text="Start Upload Resumes" type="Emphasized" press="uploadResumes"></Button>
-</FlexBox>
+        <columns>
+            <Column><Text text="File Name"/></Column>
+            <Column><Text text="File Type"/></Column>
+            <Column><Text text="Size"/></Column>
+            <Column><Text text="Status"/></Column>
+        </columns>
 
+        <items>
+            <ColumnListItem>
+                <cells>
+                    <Text text="{resume>fileName}"/>
+                    <Text text="{resume>mediaType}"/>
+                    <Text text="{resume>fileSize}"/>
+                    <ObjectStatus text="{resume>uploadState}"/>
+                </cells>
+            </ColumnListItem>
+        </items>
+
+    </Table>
+
+    <FlexBox justifyContent="End">
+        <Button text="Start Upload Resumes" type="Emphasized" press="uploadResumes"/>
+    </FlexBox>
 </Panel>
         </VBox>
 </core:FragmentDefinition>

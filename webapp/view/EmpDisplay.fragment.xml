@@ -103,7 +103,7 @@
             <cells>
             <Text text="{Empid}"></Text>
             <Text text="{Filename}"></Text>
-            <Button icon="sap-icon://download" type="Reject"press="onPressDownload" ></Button>
+            <Button icon="sap-icon://download" type="Reject" press="onPressDownload" ></Button>
           
             </cells>
             </ColumnListItem>

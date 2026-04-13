@@ -64,7 +64,7 @@
                 </viz:dataset>
                 <viz:feeds>
                   <viz.feed:FeedItem uid="categoryAxis" type="Dimension" values="['employeeid','employeename']" />
-                    <viz.feed:FeedItem uid="valueAxis" type="Measure" values="['salary','rating']" />
+                <viz.feed:FeedItem uid="valueAxis" type="Measure" values="['salary','rating']" />
                   
                 </viz:feeds>
             </viz:VizFrame>
